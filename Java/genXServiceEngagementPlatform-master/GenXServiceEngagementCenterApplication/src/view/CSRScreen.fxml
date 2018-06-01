@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="CSRDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" style="-fx-background-color: #607d8c;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSRDashboardController">
+   <children>
+      <JFXButton layoutX="703.0" layoutY="79.0" onAction="#OpenIncidentStatus" style="-fx-background-color: #FFD600;" stylesheets="@../css/tiles.css" text="CURRENT INCIDENT STATUS">
+         <font>
+            <Font name="Raleway Black" size="12.0" />
+         </font>
+      </JFXButton>
+      <Pane layoutX="19.0" layoutY="9.0" prefHeight="652.0" prefWidth="252.0">
+         <children>
+            <Label fx:id="firstname" layoutX="101.0" layoutY="27.0" text="Annis" textFill="#efff3a">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Label>
+            <Label fx:id="CustomerType" layoutX="57.0" layoutY="110.0" text="CUSTOMER - PREMIUM" textFill="#c5c5c5">
+               <font>
+                  <Font name="Raleway ExtraBold" size="14.0" />
+               </font></Label>
+            <JFXListView fx:id="customerServicesList" layoutY="166.0" prefHeight="231.0" prefWidth="252.0" style="-fx-background-color: #17bbd4;" />
+            <Label fx:id="lastname" layoutX="165.0" layoutY="29.0" text="Titchener" textFill="#efff3a">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="customerservicehistoryCSR" layoutY="430.0" prefHeight="220.0" prefWidth="252.0" style="-fx-background-color: #EfEfEf; -fx-text-background-color: #2F2F2F;" stylesheets="@../css/table.css">
+                            <placeholder>
+        <Label text="No customer selected" />
+    </placeholder>
+              <columns>
+                <TableColumn fx:id="ishorttextpastticket" prefWidth="188.0" style="-fx-background-color: #EfEfEf;" text="Subject" />
+                <TableColumn fx:id="istatuspastticket" prefWidth="63.0" style="-fx-background-color: #EfEfEf;" text="Status" />
+              </columns>
+            </TableView>
+            <Label layoutX="14.0" layoutY="407.0" text="PAST TICKETS" textFill="WHITE">
+               <font>
+                  <Font name="Raleway Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="-3.0" text="CUSTOMER DETAILS" textFill="WHITE">
+               <font>
+                  <Font name="Raleway ExtraLight" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="27.0" text="NAME" textFill="#e2e2e2" />
+            <ImageView fx:id="customertypeimage" fitHeight="36.0" fitWidth="53.0" layoutX="8.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/premiumcustomer.png" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="SOFT_LIGHT" fitHeight="39.0" fitWidth="41.0" layoutX="8.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/cusotmer.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="4.0" layoutY="146.0" text="SERVICE ENROLLED BY THE CUSTOMER" textFill="#f4f4f4">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="47.0" text="EMAIL" textFill="#e2e2e2" />
+            <Label fx:id="phone" layoutX="102.0" layoutY="67.0" text="PHONE" textFill="#efff3a" />
+            <Label fx:id="email" layoutX="102.0" layoutY="47.0" text="EMAIL" textFill="#efff3a" />
+            <Label layoutX="46.0" layoutY="66.0" text="PHONE" textFill="#e2e2e2" />
+         </children></Pane>
+      <Pane layoutX="295.0" layoutY="107.0" minWidth="965.0" prefHeight="300.0" prefWidth="0.0" AnchorPane.bottomAnchor="293.0" AnchorPane.leftAnchor="295.0" AnchorPane.topAnchor="107.0">
+         <children>
+            <TableView fx:id="iincidentQueue" layoutX="2.0" layoutY="4.0" minWidth="958.0" onMouseClicked="#TableAccessLevel" prefHeight="300.0" prefWidth="0.0" style="-fx-background-color: #EFEFEF; -fx-text-background-color: #2F2F2F;" stylesheets="@../../bin/css/table.css">
+                            <placeholder>
+        <Label text="NO TICKETS IN THE QUEUE. HAVE A NICE DAY!" />
+    </placeholder>
+               <columns>
+                  <TableColumn fx:id="iincidentid" prefWidth="89.333251953125" style="-fx-background-color: #efefef;" text="INCIDENT ID" />
+                  <TableColumn fx:id="ichannel" prefWidth="86.3333740234375" style="-fx-background-color: #efefef;" text="CHANNEL" />
+                  <TableColumn fx:id="iservice" prefWidth="68.3333740234375" style="-fx-background-color: #efefef;" text="SERVICE" />
+                  <TableColumn fx:id="ishorttext" prefWidth="130.6666259765625" style="-fx-background-color: #efefef;" text="SHORT TEXT" />
+                  <TableColumn fx:id="iproblem" prefWidth="207.3333740234375" style="-fx-background-color: #efefef;" text="PROBLEM" />
+                  <TableColumn fx:id="ipriority" prefWidth="83.666748046875" style="-fx-background-color: #efefef;" text="PRIORITY" />
+                  <TableColumn fx:id="icreatedon" prefWidth="86.666748046875" style="-fx-background-color: #efefef;" text="CREATED ON" />
+                  <TableColumn fx:id="itag" minWidth="0.0" onEditCommit="#TagHandler" prefWidth="53.0" style="-fx-background-color: #efefef;" text="TAG" />
+                  <TableColumn fx:id="inote" onEditCommit="#NotesHandler" prefWidth="198.3333740234375" style="-fx-background-color: #efefef;" text="NOTES" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane layoutX="290.0" layoutY="420.0" prefHeight="245.0" prefWidth="974.0">
+         <children>
+            <TableView fx:id="knowledgebasetable" layoutX="6.0" layoutY="27.0" prefHeight="218.0" prefWidth="963.0" style="-fx-background-color: #c6f463; -fx-text-background-color: #2F2F2F;" stylesheets="@../../bin/css/table.css">
+              <placeholder>
+        <Label text="SELECT THE INCIDENT TO SHOW POSSIBLE SOLUTIONS" />
+    </placeholder>
+              <columns>
+                  <TableColumn fx:id="ishorttextknowledgebase" prefWidth="155.00006103515625" style="-fx-background-color: #c6f463;" text="DESCRIPTION" />
+                <TableColumn fx:id="isolutionknowledgebase" prefWidth="229.99993896484375" style="-fx-background-color: #c6f463;" text="POSSIBLE SOLUTIONS" />
+                  <TableColumn fx:id="iserviceknowledgebase" prefWidth="75.0" style="-fx-background-color: #c6f463;" text="SERVICE" />
+                  <TableColumn fx:id="inotesknowledgebase" prefWidth="395.0" style="-fx-background-color: #c6f463;" text="NOTES" />
+                  <TableColumn fx:id="isentimentidknowledgebase" prefWidth="106.0" style="-fx-background-color: #c6f463;" text="SENTIMENT" />
+              </columns>
+            </TableView>
+            <Label layoutX="8.0" layoutY="-7.0" text="KNOWLEDGE HUB" textFill="#dddddd">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <JFXButton fx:id="closeBtn" contentDisplay="GRAPHIC_ONLY" layoutX="1231.0" layoutY="12.0" onAction="#handleCloseButtonAction" prefHeight="25.0" prefWidth="29.0" ripplerFill="WHITE" style="-fx-border-radius: 0em;" stylesheets="@../css/tiles.css">
+         <graphic>
+            <MaterialDesignIconView fill="#170101" glyphName="CLOSE" size="15" />
+         </graphic>
+      </JFXButton>
+      <Label layoutX="300.0" layoutY="74.0" text="CURRENT INCIDENT QUEUE" textFill="#dddddd">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1235.0" layoutY="37.0" text="EXIT" textFill="#c5bfbf" />
+      <Label layoutX="18.0" layoutY="674.0" text="All rights reserved to Information Technology &amp; Management Department , Illinois Institute of Technology.&#10;Designed By: Harshit Kumar" textFill="#acaaaa">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="refreshbtn" layoutX="1164.0" layoutY="78.0" onAction="#RefreshServiceHistory" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #1F3F3F;" stylesheets="@../css/tiles.css" text="REFRESH" textFill="WHITE">
+         <font>
+            <Font name="Raleway ExtraBold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="ProcessTicket" layoutX="1034.0" layoutY="78.0" onAction="#ProcessTicketHandler" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #2F2F2F;" stylesheets="@../css/tiles.css" text="PROCESS TICKET" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Raleway ExtraBold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="SelfProcessTicket" layoutX="901.0" layoutY="79.0" onAction="#MyTicketViewHandler" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #234567;" stylesheets="@../css/tiles.css" text="MY TICKETS" textFill="WHITE">
+         <font>
+            <Font name="Raleway ExtraBold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Pane fx:id="incidentPane" layoutX="13.0" layoutY="11.0" prefHeight="656.0" prefWidth="1246.0" style="-fx-background-color: #FFD600;" visible="false">
+         <children>
+            <JFXButton fx:id="backBtnCSR" layoutX="17.0" layoutY="36.0" onAction="#backCSR" style="-fx-background-color: black;" stylesheets="@../css/tiles.css" text="BACK" textFill="WHITE">
+               <graphic>
+                  <MaterialDesignIconView fill="#bdbdbd" glyphName="CHEVRON_LEFT" size="22.0" text="" />
+               </graphic>
+            </JFXButton>
+            <PieChart fx:id="pieChart1" layoutX="73.0" layoutY="112.0" prefHeight="459.0" prefWidth="550.0" />
+            <Label fx:id="totalCount1" layoutX="149.0" layoutY="577.0" prefHeight="47.0" prefWidth="323.0">
+               <font>
+                  <Font name="Raleway" size="14.0" />
+               </font></Label>
+            <PieChart fx:id="pieChart2" layoutX="627.0" layoutY="115.0" prefHeight="449.0" prefWidth="598.0" />
+            <Label fx:id="totalCount2" layoutX="833.0" layoutY="577.0" prefHeight="49.0" prefWidth="283.0">
+               <font>
+                  <Font name="Raleway" size="14.0" />
+               </font></Label>
+            <Label layoutX="377.0" layoutY="33.0" text="ANALYTICS AND REPORTING" textFill="#091d57">
+               <font>
+                  <Font name="Raleway Black" size="38.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="solutionArea" blendMode="SCREEN" layoutX="294.0" layoutY="16.0" prefHeight="46.0" prefWidth="932.0" style="-fx-background-color: #3f3f3f;" visible="false">
+         <children>
+            <Label layoutX="21.0" layoutY="18.0" text="ENTER SOLUTION" textFill="WHITE">
+               <font>
+                  <Font name="Raleway ExtraLight" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="solutionprovided" layoutX="179.0" layoutY="13.0" prefHeight="25.0" prefWidth="658.0" style="-fx-background-color: white;" />
+            <Button fx:id="submit" layoutX="854.0" layoutY="11.0" mnemonicParsing="false" onAction="#SubmitSolution" style="-fx-background-color: #3f3f3f;" stylesheets="@../css/tiles.css" text="SUBMIT" textFill="#d1d611" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
